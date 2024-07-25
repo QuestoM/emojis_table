@@ -125,12 +125,12 @@
 </head>
 <body>
     <div id="game-container">
-        <div id="instructions">הקליקו על האימוג'י כדי להזיז אותם למקום הנכון</div>
+        <div id="instructions">הקליקו על האימוג'י כדי להזיז אותם ליעד</div>
         <div id="game-board">
             <!-- הלוח יתמלא דינמית ע"י JavaScript -->
         </div>
         <button id="card-deck">פתח קלף חדש</button>
-        <div id="current-card">היעד שלך:</div>
+        <div id="current-card">לסדר את הטבלה מעלה שתראה כך:</div>
         <div id="card-layout">
             <!-- פריסת הקלף תתמלא דינמית ע"י JavaScript -->
         </div>
@@ -218,6 +218,11 @@
             hideWinMessage();
         }
         
+        // הצג את הקלף הראשון כאשר הדף נטען
+        window.onload = function() {
+            drawCard();
+        };
+        
         function updateCardLayout() {
             cardLayout.innerHTML = '';
             currentCardLayout.forEach(tile => {
@@ -257,6 +262,8 @@
             timerDisplay.textContent = 'זמן: 00:00';
             startTimer();
         }
+        
+
         
         function formatTime(totalSeconds) {
             const minutes = Math.floor(totalSeconds / 60);
